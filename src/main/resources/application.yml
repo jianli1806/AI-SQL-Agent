@@ -1,0 +1,47 @@
+# application.yml
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sql-agent
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1200000
+
+# Ollama配置
+ollama:
+  base-url: http://localhost:11434
+  model: llama3.2:latest  # 请根据您的实际模型修改
+
+# Agent配置
+agent:
+  use-ai: true  # 是否使用AI模式
+
+# 应用配置
+sql-agent:
+  query:
+    max-rows: 1000
+    timeout-seconds: 60  # 增加超时时间给AI处理
+
+  security:
+    allow-dml: false
+    allow-ddl: false
+    dangerous-keywords: "DROP,TRUNCATE,DELETE,UPDATE,INSERT,ALTER,CREATE"
+
+# 日志配置
+logging:
+  level:
+    com.agent: DEBUG
+    org.springframework.jdbc: DEBUG
+    root: INFO
