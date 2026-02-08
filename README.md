@@ -55,18 +55,23 @@ Ollama本地大模型 → SQL生成
 ```bash
 git clone https://github.com/YOUR_USERNAME/AI-SQL-Agent.git
 cd AI-SQL-Agent
+
 2. **配置数据库**
 创建MySQL数据库test_db
 执行sql/schema.sql创建测试表和数据
 修改application.yml中的数据库连接信息
+
 3. **启动Ollama和下载模型**
 ollama serve
 ollama pull llama3.2:3b
+
 4. **启动项目**
 mvn spring-boot:run
+
 5. **访问系统**
 Web界面：http://localhost:8080
 在查询框输入："查询所有用户信息"
+
 ✨ 核心亮点
 🧠 AI驱动的智能查询
 多模型支持：兼容LLaMA、SQLCoder等主流开源模型
